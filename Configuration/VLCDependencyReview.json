@@ -1,0 +1,21 @@
+{
+  "package": "https://github.com/videolan/vlckit.git",
+  "version": "4.0.0-a25",
+  "revision": "8f5ce02f09a7da5d061a24ddac3cb432f2a9b332",
+  "artifactURL": "https://download.videolan.org/cocoapods/unstable/VLCKit-4.0-20260929-1631.zip",
+  "artifactSHA256": "f37c8dbdd4427d1a3f5d75dc4b8bd1ae863cef4426f9a405a2fd1c5c9012f1fb",
+  "libVLCSourceRevision": "005e69e67",
+  "frameworkIdentifier": "org.videolan.vlckit",
+  "frameworkPrivacyManifestSHA256": null,
+  "deviceUUIDs": {
+    "iPhoneOS": "ACCF2C63-55FF-3A32-89D7-3D63521C537B",
+    "AppleTVOS": "3A26C8A2-4C8B-331D-96C0-E68FC3DCF1EC"
+  },
+  "distributionApproved": false,
+  "blockers": [
+    "Vendor framework has no PrivacyInfo.xcprivacy. Required-reason declarations must be inside the framework bundle.",
+    "libVLC imports fstatfs; inspected file input uses mount flags, not low-disk handling. Do not claim E174.1 without a matching use or source change.",
+    "Complete bundled codec/dependency notices, corresponding source and replacement/relinking deliverables are not yet verified.",
+    "Pinned 4.0.0-a25 is an alpha, qualified only for development testing; production SDK acceptance remains open."
+  ]
+}

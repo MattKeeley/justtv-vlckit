@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "candidateOnly": true,
+  "vlckit": {
+    "revision": "8f5ce02f09a7da5d061a24ddac3cb432f2a9b332",
+    "url": "https://codeload.github.com/videolan/vlckit/tar.gz/8f5ce02f09a7da5d061a24ddac3cb432f2a9b332",
+    "sha256": "8e2291f2f31032414a058bc80585de2ff12864303887271020d5fb6f09e0e61b"
+  },
+  "libvlc": {
+    "revision": "005e69e67a8730f128e44bde68437fbb048cf45f",
+    "url": "https://codeload.github.com/videolan/vlc/tar.gz/005e69e67",
+    "sha256": "c6958dac85a2f1ac9787e2bfb8e54e9ae3a8ec1ab2c1f3eab390e7b6eeac041e"
+  },
+  "patches": [
+    "Vendor/VLC/patches/0001-avoid-apple-filesystem-capacity-api.patch",
+    "Vendor/VLC/patches/0002-disable-freetype-mmap.patch"
+  ],
+  "requiredSDKs": [
+    "iphoneos",
+    "iphonesimulator",
+    "appletvos",
+    "appletvsimulator"
+  ],
+  "minimumFreeGiB": 16,
+  "buildProfile": "Vendor/VLC/playback-only.conf",
+  "forbiddenModules": [
+    "stream_out_",
+    "access_output_",
+    "chromecast",
+    "bonjour",
+    "microdns",
+    "upnp",
+    "smb",
+    "dsm",
+    "sftp",
+    "nfs",
+    "avahi",
+    "sap",
+    "podcast",
+    "opencv",
+    "zvbi"
+  ]
+}

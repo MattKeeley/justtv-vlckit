@@ -1,0 +1,36 @@
+From: ProDefense LLC <legal@justtv.app>
+Subject: [PATCH] access/file: avoid filesystem-volume inspection on Apple
+
+JustTV passes app-local downloads or explicitly requested network media to
+libVLC. Do not query mount flags through the disk-capacity API merely to
+choose file read-ahead behavior. Treat Apple file descriptors as local;
+HTTP/HLS/RTSP inputs retain their own network buffering paths.
+
+This modification is offered under the same LGPL-2.1-or-later terms as
+modules/access/file.c. Preserve this patch with the corresponding source.
+It does not by itself qualify other modules or their privacy declarations.
+
+--- a/modules/access/file.c
++++ b/modules/access/file.c
+@@ -72,16 +72,11 @@
+ static bool IsRemote (int fd)
+ {
+ #if defined(__APPLE__)
+-    /* This has to preceed the general fstatvfs implmentation below,
+-     * as even though Darwin has fstatvfs, it does not expose the
+-     * MNT_LOCAL in the statvfs.f_flag field.
+-     */
+-    struct statfs sfs;
+-
+-    if (fstatfs (fd, &sfs))
+-        return false;
+-
+-    return !((sfs.f_flags & MNT_LOCAL) == MNT_LOCAL);
++    /* JustTV modification: no volume-capacity API for a read-ahead hint.
++     * File inputs are app-local; network inputs use their access modules.
++     * Other platforms retain the upstream remote-filesystem behavior. */
++    (void)fd;
++    return false;
+ 
+ #elif defined (HAVE_FSTATVFS) && defined (MNT_LOCAL)
+     struct statvfs stf;
